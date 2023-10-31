@@ -49,3 +49,19 @@ export const getAllRecords = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 }
+
+//get all records by email
+export const getAllRecordsByEmail = async (req, res) => {
+  const email = req.params.email;
+  try {
+    const allRecords = await SaveRecords.find({ email: email });
+    if (!allRecords) {
+      res.status(200).json({ message: "No Any Records" });
+      return;
+    }
+    res.status(200).json(allRecords);
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
