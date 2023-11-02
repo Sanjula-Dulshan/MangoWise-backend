@@ -14,7 +14,8 @@ export const saveSuitableQuantity = async (req, res) => {
 
 // Controller function to retrieve records based on age and growthStage
 export const findRecordByConditions = async (req, res) => {
-  const { nvalue, pvalue, kvalue, record_id, age, growthStage, email } = req.body;
+  const { nvalue, pvalue, kvalue, record_id, age, growthStage, email } =
+    req.body;
   const record = await SuitableQuantity.findOne({
     ageLowerLimit: { $lt: age },
     ageUpperLimit: { $gt: age },
@@ -128,7 +129,7 @@ export const findRecordByConditions = async (req, res) => {
 
               let options3 = {
                 method: "POST",
-                uri: "http://127.0.0.1:8070/records/add",
+                uri: "https://mangowise-backend.onrender.com/records/add",
                 body: data3,
                 json: true,
               };
